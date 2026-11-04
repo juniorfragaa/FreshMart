@@ -1,0 +1,31 @@
+First name,Last name,Gender,Email,Salary,Department,Position,Job title
+Adam,Brennan,Male,abrennan@freshmart.ie,28241.00,HR,middle,HR Assistant
+Jack,Kavanagh,Male,jkavanagh@freshmart.ie,41273.00,Warehouse,,Team Lead
+James,Costa,Male,jcosta@freshmart.ie,30783.00,Warehouse,middle,Stock Clerk
+Pedro,Murray,Male,pmurray@freshmart.ie,26710.00,Customer Service,junior,Customer Service Assistant
+Maria,Murray,Female,mmurray@freshmart.ie,30417.00,Bakery,middle,Baker
+Niall,O'Connor,Male,noconnor@freshmart.ie,18328.00,Warehouse,intern,Stock Clerk
+Lucas,Brennan,Male,lbrennan@freshmart.ie,26385.00,HR,junior,HR Assistant
+Patrick,Murphy,Male,pmurphy@freshmart.ie,26392.00,Warehouse,junior,Stock Clerk
+Ryan,Doyle,Male,rdoyle@freshmart.ie,19970.00,Bakery,intern,Baker
+Darragh,Brennan,Male,dbrennan@freshmart.ie,26834.00,Checkout,junior,Cashier
+Adam,Costa,Male,acosta@freshmart.ie,28988.00,Warehouse,middle,Stock Clerk
+Sophie,Kennedy,Female,skennedy@freshmart.ie,19512.00,Customer Service,intern,Customer Service Assistant
+Ella,Quinn,Female,equinn@freshmart.ie,81896.00,HR,,Head Manager
+Darragh,Murray,Male,dmurray@freshmart.ie,40817.00,Checkout,,Team Lead
+Orla,Kennedy,Female,okennedy@freshmart.ie,28725.00,Fresh Produce,middle,Produce Assistant
+Lucas,Flynn,Male,lflynn@freshmart.ie,20274.00,Bakery,intern,Baker
+Pedro,Kennedy,Male,pkennedy@freshmart.ie,28502.00,Bakery,middle,Baker
+Tomas,Ryan,Male,tryan@freshmart.ie,26470.00,Butchery,junior,Butcher
+Ryan,Dunne,Male,rdunne@freshmart.ie,53511.00,Checkout,,Assistant Manager
+Sean,Flynn,Male,sflynn@freshmart.ie,57458.00,Warehouse,,Assistant Manager
+Niamh,O'Brien,Female,nobrien@freshmart.ie,43648.00,Customer Service,,Team Lead
+Eoin,Kennedy,Male,ekennedy@freshmart.ie,28731.00,Bakery,middle,Baker
+Lucas,Silva,Male,lsilva@freshmart.ie,28022.00,Butchery,contract,Butcher
+Hannah,Silva,Female,hsilva@freshmart.ie,24924.00,Butchery,contract,Butcher
+Ciara,Flynn,Female,cflynn@freshmart.ie,33840.00,HR,senior,HR Assistant
+Niall,Reilly,Male,nreilly@freshmart.ie,35254.00,Customer Service,senior,Customer Service Assistant
+Megan,Kavanagh,Female,mkavanagh@freshmart.ie,40430.00,Butchery,,Team Lead
+Megan,Kelly,Female,mkelly@freshmart.ie,38852.00,Bakery,,Team Lead
+Adam,Quinn,Male,aquinn@freshmart.ie,39279.00,HR,,Team Lead
+Hannah,Byrne,Female,hbyrne@freshmart.ie,43949.00,Fresh Produce,,Team Lead
