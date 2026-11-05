@@ -8,7 +8,7 @@ public class FreshMart {
 
         Scanner input = new Scanner(System.in); // reads what the user types on the keyboard
         MenuOption choice;                      // declared outside the do-while so the while condition can see it
-
+        
         do {    // do-while: shows the menu at least once and repeats until EXIT
             System.out.println("==== FRESHMART STAFF MENU ===="); // title of the main menu
 
