@@ -10,6 +10,10 @@ public class FreshMart {
         Scanner input = new Scanner(System.in); // I use it to read what the user types on the keyboard
         MenuOption choice;                      // I declared it outside the do-while so the while condition can see it
 
+        Scanner fileReader = FileLoader.openFile(input); // I give my keyboard to FileLoader and get the open file back
+        StaffList staffList = FileLoader.readStaff(fileReader); // Applicants_Form.txt
+        System.out.println("Staff loaded: " + staffList.getCount());
+        
         do {    // I used a do-while because the menu has to show at least once, then repeat until EXIT
             System.out.println("==== FRESHMART STAFF MENU ===="); // title of the main menu
 
