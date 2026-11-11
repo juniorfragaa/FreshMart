@@ -9,7 +9,8 @@ public class FreshMart {
 
         Scanner input = new Scanner(System.in); // I use it to read what the user types on the keyboard
         MenuOption choice;                      // I declared it outside the do-while so the while condition can see it
-
+        
+        
         Scanner fileReader = FileLoader.openFile(input); // I give my keyboard to FileLoader and get the open file back
         StaffList staffList = FileLoader.readStaff(fileReader); // Applicants_Form.txt
         System.out.println("Staff loaded: " + staffList.getCount());
@@ -49,6 +50,27 @@ public class FreshMart {
 
                     case SEARCH:
                         System.out.println("SEARCH selected");
+                        staffList.sortByName(); // Binary Search only works on a sorted list, so I sort first
+                        System.out.print("Enter the full name to search: ");
+                        input.nextLine(); // I clear the Enter left by nextInt(), otherwise the name comes empty
+
+                        String searchName;
+
+                        searchName = input.nextLine(); // nextLine() reads the full name with the space
+
+                        if (searchName.isEmpty()){
+                            System.out.println("Name cannot be empty");
+                        } else {
+                            int position = staffList.searchByName(searchName); // the position, or -1 if not found
+                            if (position == -1){
+                                System.out.println("Staff member not found");
+                            } else {
+                                System.out.println("Found: " + 
+                                staffList.getMember(position).getName() + " - " +
+                                staffList.getMember(position).getDesignation() + " - " +
+                                staffList.getMember(position).getDepartment());
+                            }
+                        }
                         System.out.println("");
                         break;
 

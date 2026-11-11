@@ -41,5 +41,10 @@ public class StaffList {
     public void sortByName(){
         StaffSorter.mergeSort(members, 0, count - 1);
     }
+    
+    // I search my own array with Binary Search and give back the position (-1 if not found)
+    public int searchByName(String searchName){
+      return StaffSearcher.binarySearch(members, 0,  count - 1, searchName);
+    }
 }
  
