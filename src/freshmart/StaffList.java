@@ -22,6 +22,10 @@ public class StaffList {
     public StaffMember getMember(int index){
         return members[index];
     }
+    
+    public void setMember(int index, StaffMember m){
+        members[index] = m;
+    }
 
     // I add a record in the next free slot (same idea as addEmployee in Department)
     public void add(StaffMember m){
@@ -32,4 +36,10 @@ public class StaffList {
         members[count] = m;
         count++;
     }
+    
+    // I sort my own array, because it is private (only slots 0 to count - 1 have records)
+    public void sortByName(){
+        StaffSorter.mergeSort(members, 0, count - 1);
+    }
 }
+ 

@@ -39,6 +39,11 @@ public class FreshMart {
                 switch (choice) {
                     case SORT:
                         System.out.println("SORT selected");
+                        staffList.sortByName(); // I sort the list A to Z with my Merge Sort
+                        System.out.println("Staff sorted A to Z (first 20):");
+                        for (int i = 0; i < 20; i++){    // the brief asks to show only the first 20
+                            System.out.println((i + 1) + ". " + staffList.getMember(i).getName());
+                        }
                         System.out.println("");
                         break;
 
