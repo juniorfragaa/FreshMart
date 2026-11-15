@@ -2,6 +2,7 @@ package freshmart;
 
 import java.util.Scanner;
 import manager.*;
+import tree.StaffTree;
 
 // FreshMart - the main class. I start the program here and show the staff menu.
 public class FreshMart {
@@ -126,6 +127,16 @@ public class FreshMart {
 
                     case CREATE_BINARY_TREE:
                         System.out.println("CREATE BINARY TREE selected");
+                        System.out.println("");
+                        
+                        StaffTree tree = new StaffTree();   // a new empty tree
+                        tree.buildTree(staffList);          // I insert everyone, managers first, so they stay at the top
+
+                        System.out.println("Level order traversal: ");
+                        tree.displayLevelOrder();           // void, it prints by itself, so it cannot go inside println
+
+                        System.out.println("Tree height: " + tree.getHeight());     // how many levels the tree has
+                        System.out.println("Total nodes: " + tree.getNodeCount());  // how many people are in the tree
                         System.out.println("");
                         break;
 
