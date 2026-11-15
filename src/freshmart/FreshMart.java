@@ -16,6 +16,7 @@ public class FreshMart {
         Scanner fileReader = FileLoader.openFile(input); // I give my keyboard to FileLoader and get the open file back
         StaffList staffList = FileLoader.readStaff(fileReader); // Applicants_Form.txt
         System.out.println("Staff loaded: " + staffList.getCount());
+        System.out.println("");
         StaffList newRecords = new StaffList(); // a second list only for the new records, outside the loop so it is not emptied each time
         
         do {    // I used a do-while because the menu has to show at least once, then repeat until EXIT
@@ -27,8 +28,10 @@ public class FreshMart {
             }
 
             int typedNumber = -1;    // I start at -1 because it is not on the menu (no valid number yet)
+            System.out.println("");
             System.out.print("Choose an option (1-5): ");
-
+            
+            
             try {
                 typedNumber = input.nextInt(); // this line fails if the user types letters, so I put it in a try
             } catch (Exception e) {
@@ -39,10 +42,12 @@ public class FreshMart {
 
             if (choice == null) { // I check null first because a switch on null would crash the program
                 System.out.println("Invalid option. Please choose 1 to 5.");
+                System.out.println("");    // a blank line so the menu does not stick to the message
             } else { // here I know the option is valid, so I run it
                 switch (choice) {
                     case SORT:
                         System.out.println("SORT selected");
+                        System.out.println("");
                         staffList.sortByName(); // I sort the list A to Z with my Merge Sort
                         System.out.println("Staff sorted A to Z (first 20):");
                         for (int i = 0; i < 20; i++){    // the brief asks to show only the first 20
@@ -53,6 +58,7 @@ public class FreshMart {
 
                     case SEARCH:
                         System.out.println("SEARCH selected");
+                        System.out.println("");
                         staffList.sortByName(); // Binary Search only works on a sorted list, so I sort first
                         System.out.print("Enter the full name to search: ");
                         input.nextLine(); // I clear the Enter left by nextInt(), otherwise the name comes empty
@@ -63,6 +69,7 @@ public class FreshMart {
 
                         if (searchName.isEmpty()){
                             System.out.println("Name cannot be empty");
+                            
                         } else {
                             int position = staffList.searchByName(searchName); // the position, or -1 if not found
                             if (position == -1){
@@ -79,13 +86,17 @@ public class FreshMart {
 
                     case ADD_RECORDS:
                         System.out.println("ADD RECORDS selected");
+                        System.out.println("");
                         
                         input.nextLine(); // I clear the Enter left by nextInt(), same as in SEARCH
                         System.out.print("Enter the manager's full name: ");
+                        
                         String newName = InputValidator.readName(input); // it keeps asking until the name is not empty and has no numbers
+                        System.out.println("");
                         System.out.println("1. Head Manager");
                         System.out.println("2. Assistant Manager");
                         System.out.println("3. Team Lead");
+                        System.out.println("");
                         System.out.print("Choose manager type (1-3): ");
                         
                         int typeChoice = InputValidator.readMenuChoice(input, 3); // only 1, 2 or 3 can pass
@@ -102,10 +113,12 @@ public class FreshMart {
    
                         // only these 7 departments exist, written the same as in the file
                         String[] departments = {"Checkout", "Bakery", "Butchery", "Fresh Produce", "Warehouse", "Customer Service", "HR"};
-                        
+
+                        System.out.println("");
                         for(int i = 0; i < departments.length; i++){    // i + 1 because the user sees 1 to 7
                             System.out.println((i + 1) + ". " + departments[i]);      
                         }
+                        System.out.println("");
                         System.out.print("Choose department (1-7): ");
                         
                         int deptChoice = InputValidator.readMenuChoice(input, departments.length); // the array knows it has 7
@@ -115,7 +128,9 @@ public class FreshMart {
                         StaffMember newMember = new StaffMember(newName, newManager.getManagerType(), newDepartment);
                         staffList.add(newMember);     // in the main list, so SORT and SEARCH can find it too
                         newRecords.add(newMember);    // in the new list, so I can show all the new records
+                        System.out.println("");
                         System.out.println(newName + " has been added as " + newManager.getManagerType() + " to " + newDepartment + " successfully!");
+                        System.out.println("");
                         System.out.println("New records added: ");
                         for(int i = 0; i < newRecords.getCount(); i++){    // every record added so far, not only the last one
                             System.out.println(newRecords.getMember(i).getName() + " - " +
@@ -134,6 +149,7 @@ public class FreshMart {
 
                         System.out.println("Level order traversal: ");
                         tree.displayLevelOrder();           // void, it prints by itself, so it cannot go inside println
+                        System.out.println("");
 
                         System.out.println("Tree height: " + tree.getHeight());     // how many levels the tree has
                         System.out.println("Total nodes: " + tree.getNodeCount());  // how many people are in the tree

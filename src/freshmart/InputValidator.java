@@ -19,7 +19,7 @@ public class InputValidator {
                 myKB.next(); // I remove the wrong text, otherwise nextInt() would read it again forever
             }
             if(choice < 1 || choice > max){    // too small OR too big
-                System.out.println("Invalid choice. Please enter 1 to " + max + ".");
+                System.out.print("Invalid choice. Please enter 1 to " + max + ": ");
             }
 
         } while(choice < 1 || choice > max);    // I repeat while the number is outside 1 to max
@@ -46,8 +46,14 @@ public class InputValidator {
 
             if (name.isEmpty()){
                 System.out.println("Name cannot be empty");
+                System.out.println("");
+                System.out.print("Enter the manager's full name: ");
+                
             } else if (hasNumber){
                 System.out.println("Name cannot contain numbers");
+                System.out.println("");
+                System.out.print("Enter the manager's full name: ");
+                
             } else {
                 valid = true;    // both rules passed, so the loop can stop
             }
