@@ -1,5 +1,6 @@
-package freshmart;
+package staff;
 
+// 3. staff - StaffMember (one person), StaffList (all of them), StaffSorter (Merge Sort), StaffSearcher (Binary Search)
 // StaffList: I made this class to keep every StaffMember in one list,
 // so the sort, search, add and tree all use the same list
 public class StaffList {

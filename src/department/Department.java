@@ -3,6 +3,7 @@ package department;
 import employee.Employee;
 import manager.Manager;     // I import Manager because it is in another package
 
+// 6. department - the inheritance model from my class diagram
 // Department: I put the data that every department shares here
 // I made it abstract because nobody works in just a "department", it is Bakery, HR, Checkout..
 public abstract class Department { 

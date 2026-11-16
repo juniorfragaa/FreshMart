@@ -1,5 +1,6 @@
 package employee;
 
+// 6. employee - the inheritance model from my class diagram
 // Employee - I put the data that every staff member shares here, so I don't repeat it
 // I made it abstract because nobody is just an employee: they are full-time, intern or contract
 public abstract class Employee {

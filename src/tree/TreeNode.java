@@ -1,6 +1,6 @@
 package tree;
 
-import freshmart.StaffMember;
+import staff.StaffMember;
 
 // TreeNode: one box of my binary tree
 // it keeps one staff member and points to the two boxes below it

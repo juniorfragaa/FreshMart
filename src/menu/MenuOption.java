@@ -1,4 +1,4 @@
-package freshmart;
+package menu;
 
 // MenuOption - the five options of the main menu.
 // I used an enum so the menu can only have these options and nothing else.

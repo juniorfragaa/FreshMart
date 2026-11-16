@@ -3,6 +3,8 @@ package freshmart;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import staff.StaffList;
+import staff.StaffMember;
 
 // FileLoader - I made this class to open and read the staff file, so the main menu stays short
 public class FileLoader {

@@ -1,24 +1,25 @@
 package freshmart;
 
+import menu.MenuOption;
 import java.util.Scanner;
-import manager.*;
-import tree.StaffTree;
+import menu.MenuActions;
+import staff.StaffList;
 
 // FreshMart - the main class. I start the program here and show the staff menu.
+// 1. freshmart - FreshMart starts the program, FileLoader reads Applicants_Form.txt
 public class FreshMart {
 
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in); // I use it to read what the user types on the keyboard
         MenuOption choice;                      // I declared it outside the do-while so the while condition can see it
-        
-        
+
         Scanner fileReader = FileLoader.openFile(input); // I give my keyboard to FileLoader and get the open file back
         StaffList staffList = FileLoader.readStaff(fileReader); // Applicants_Form.txt
         System.out.println("Staff loaded: " + staffList.getCount());
         System.out.println("");
         StaffList newRecords = new StaffList(); // a second list only for the new records, outside the loop so it is not emptied each time
-        
+
         do {    // I used a do-while because the menu has to show at least once, then repeat until EXIT
             System.out.println("==== FRESHMART STAFF MENU ===="); // title of the main menu
 
@@ -30,8 +31,7 @@ public class FreshMart {
             int typedNumber = -1;    // I start at -1 because it is not on the menu (no valid number yet)
             System.out.println("");
             System.out.print("Choose an option (1-5): ");
-            
-            
+
             try {
                 typedNumber = input.nextInt(); // this line fails if the user types letters, so I put it in a try
             } catch (Exception e) {
@@ -46,114 +46,19 @@ public class FreshMart {
             } else { // here I know the option is valid, so I run it
                 switch (choice) {
                     case SORT:
-                        System.out.println("SORT selected");
-                        System.out.println("");
-                        staffList.sortByName(); // I sort the list A to Z with my Merge Sort
-                        System.out.println("Staff sorted A to Z (first 20):");
-                        for (int i = 0; i < 20; i++){    // the brief asks to show only the first 20
-                            System.out.println((i + 1) + ". " + staffList.getMember(i).getName());
-                        }
-                        System.out.println("");
+                        MenuActions.sortStaff(staffList);
                         break;
 
                     case SEARCH:
-                        System.out.println("SEARCH selected");
-                        System.out.println("");
-                        staffList.sortByName(); // Binary Search only works on a sorted list, so I sort first
-                        System.out.print("Enter the full name to search: ");
-                        input.nextLine(); // I clear the Enter left by nextInt(), otherwise the name comes empty
-
-                        String searchName;
-
-                        searchName = input.nextLine(); // nextLine() reads the full name with the space
-
-                        if (searchName.isEmpty()){
-                            System.out.println("Name cannot be empty");
-                            
-                        } else {
-                            int position = staffList.searchByName(searchName); // the position, or -1 if not found
-                            if (position == -1){
-                                System.out.println("Staff member not found");
-                            } else {
-                                System.out.println("Found: " + 
-                                staffList.getMember(position).getName() + " - " +
-                                staffList.getMember(position).getDesignation() + " - " +
-                                staffList.getMember(position).getDepartment());
-                            }
-                        }
-                        System.out.println("");
+                        MenuActions.searchStaff(input, staffList);
                         break;
 
                     case ADD_RECORDS:
-                        System.out.println("ADD RECORDS selected");
-                        System.out.println("");
-                        
-                        input.nextLine(); // I clear the Enter left by nextInt(), same as in SEARCH
-                        System.out.print("Enter the manager's full name: ");
-                        
-                        String newName = InputValidator.readName(input); // it keeps asking until the name is not empty and has no numbers
-                        System.out.println("");
-                        System.out.println("1. Head Manager");
-                        System.out.println("2. Assistant Manager");
-                        System.out.println("3. Team Lead");
-                        System.out.println("");
-                        System.out.print("Choose manager type (1-3): ");
-                        
-                        int typeChoice = InputValidator.readMenuChoice(input, 3); // only 1, 2 or 3 can pass
-                        Manager newManager; // a Manager box can hold any child, so I create the one the user chose
-                        
-                        // the extra values (store, shift, team size) are not in the file, so I use example values
-                        if(typeChoice == 1){
-                            newManager = new HeadManager(newName, "Junior's FreshMart");
-                        }else if(typeChoice == 2){
-                            newManager = new AssistantManager(newName, "Morning");
-                        }else {    // else instead of else if, so Java knows newManager always gets a value
-                            newManager = new TeamLead(newName, 5);
-                        }
-   
-                        // only these 7 departments exist, written the same as in the file
-                        String[] departments = {"Checkout", "Bakery", "Butchery", "Fresh Produce", "Warehouse", "Customer Service", "HR"};
-
-                        System.out.println("");
-                        for(int i = 0; i < departments.length; i++){    // i + 1 because the user sees 1 to 7
-                            System.out.println((i + 1) + ". " + departments[i]);      
-                        }
-                        System.out.println("");
-                        System.out.print("Choose department (1-7): ");
-                        
-                        int deptChoice = InputValidator.readMenuChoice(input, departments.length); // the array knows it has 7
-                        String newDepartment = departments[deptChoice - 1]; // - 1 because the array starts at 0
-
-                        // the object gives me its own type text (Head Manager, Assistant Manager or Team Lead)
-                        StaffMember newMember = new StaffMember(newName, newManager.getManagerType(), newDepartment);
-                        staffList.add(newMember);     // in the main list, so SORT and SEARCH can find it too
-                        newRecords.add(newMember);    // in the new list, so I can show all the new records
-                        System.out.println("");
-                        System.out.println(newName + " has been added as " + newManager.getManagerType() + " to " + newDepartment + " successfully!");
-                        System.out.println("");
-                        System.out.println("New records added: ");
-                        for(int i = 0; i < newRecords.getCount(); i++){    // every record added so far, not only the last one
-                            System.out.println(newRecords.getMember(i).getName() + " - " +
-                                    newRecords.getMember(i).getDesignation() + " - " + 
-                                    newRecords.getMember(i).getDepartment());
-                        }
-                        System.out.println("");
+                        MenuActions.addRecords(input, staffList, newRecords);
                         break;
 
                     case CREATE_BINARY_TREE:
-                        System.out.println("CREATE BINARY TREE selected");
-                        System.out.println("");
-                        
-                        StaffTree tree = new StaffTree();   // a new empty tree
-                        tree.buildTree(staffList);          // I insert everyone, managers first, so they stay at the top
-
-                        System.out.println("Level order traversal: ");
-                        tree.displayLevelOrder();           // void, it prints by itself, so it cannot go inside println
-                        System.out.println("");
-
-                        System.out.println("Tree height: " + tree.getHeight());     // how many levels the tree has
-                        System.out.println("Total nodes: " + tree.getNodeCount());  // how many people are in the tree
-                        System.out.println("");
+                        MenuActions.createBinaryTree(staffList);
                         break;
 
                     case EXIT:

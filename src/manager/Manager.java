@@ -1,5 +1,6 @@
 package manager;
 
+// 5. manager - Manager and its 3 types, used when I add a new manager (option 3)
 // Manager - I put the data that every manager shares here, so I don't repeat it
 // I made it abstract because nobody is just a manager
 public abstract class Manager {

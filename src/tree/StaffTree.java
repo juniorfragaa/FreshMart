@@ -1,8 +1,9 @@
 package tree;
 
-import freshmart.StaffList;
-import freshmart.StaffMember;
+import staff.StaffList;
+import staff.StaffMember;
 
+// 4. tree - TreeNode, NodeQueue and StaffTree build the hierarchy for option 4
 // StaffTree: I keep the staff hierarchy as a binary tree (each node has at most 2 children)
 // I fill it level by level, from left to right, so the managers I insert first stay at the top
 public class StaffTree {

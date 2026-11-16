@@ -1,4 +1,4 @@
-package freshmart;
+package staff;
 
 // StaffSorter: I used a recursive Merge Sort to put the staff in alphabetical order (A to Z)
 // I based it on the MergeSort.java from my lecturer, but it sorts StaffMember records by name

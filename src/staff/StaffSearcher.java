@@ -1,4 +1,4 @@
-package freshmart;
+package staff;
 
 // StaffSearcher: I used a recursive Binary Search to find one staff member by name
 // I based it on the BinarySearchRecursive from my lecturer, but it compares names (Strings)

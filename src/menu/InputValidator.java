@@ -1,4 +1,4 @@
-package freshmart;
+package menu;
 
 import java.util.Scanner;
 

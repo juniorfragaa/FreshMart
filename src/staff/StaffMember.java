@@ -1,4 +1,4 @@
-package freshmart;
+package staff;
 
 //StaffMember: I made this class to keep one simple record for each person,
 // so the short, search and tree can all work on one list
