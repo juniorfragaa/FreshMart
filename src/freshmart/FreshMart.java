@@ -2,6 +2,7 @@ package freshmart;
 
 import menu.MenuOption;
 import java.util.Scanner;
+import menu.InputValidator;
 import menu.MenuActions;
 import staff.StaffList;
 
@@ -21,51 +22,33 @@ public class FreshMart {
         StaffList newRecords = new StaffList(); // a second list only for the new records, outside the loop so it is not emptied each time
 
         do {    // I used a do-while because the menu has to show at least once, then repeat until EXIT
-            System.out.println("==== FRESHMART STAFF MENU ===="); // title of the main menu
 
-            // I print the menu with a for-each over values(), so the text only lives in the enum
-            for (MenuOption option : MenuOption.values()) {
-                System.out.println(option.getNumber() + ". " + option.getDescription());
-            }
+            MenuActions.showMenu(); // I print the title, the 5 options and the question
 
-            int typedNumber = -1;    // I start at -1 because it is not on the menu (no valid number yet)
-            System.out.println("");
-            System.out.print("Choose an option (1-5): ");
+            int number = InputValidator.readMenuChoice(input, 5); // it only returns when the number is 1 to 5
+            choice = MenuOption.fromNumber(number); // I turn the number into a menu option, it is never null here
 
-            try {
-                typedNumber = input.nextInt(); // this line fails if the user types letters, so I put it in a try
-            } catch (Exception e) {
-                System.out.println("Please enter a number.");
-                input.next(); // I remove the wrong text, otherwise nextInt() would read it again forever
-            }
-            choice = MenuOption.fromNumber(typedNumber); // I turn the number into a menu option (null if it is not on the menu)
+            switch (choice) { // each case calls one method from MenuActions
+                case SORT:
+                    MenuActions.sortStaff(staffList);
+                    break;
 
-            if (choice == null) { // I check null first because a switch on null would crash the program
-                System.out.println("Invalid option. Please choose 1 to 5.");
-                System.out.println("");    // a blank line so the menu does not stick to the message
-            } else { // here I know the option is valid, so I run it
-                switch (choice) {
-                    case SORT:
-                        MenuActions.sortStaff(staffList);
-                        break;
+                case SEARCH:
+                    MenuActions.searchStaff(input, staffList);
+                    break;
 
-                    case SEARCH:
-                        MenuActions.searchStaff(input, staffList);
-                        break;
+                case ADD_RECORDS:
+                    MenuActions.addRecords(input, staffList, newRecords);
+                    break;
 
-                    case ADD_RECORDS:
-                        MenuActions.addRecords(input, staffList, newRecords);
-                        break;
+                case CREATE_BINARY_TREE:
+                    MenuActions.createBinaryTree(staffList);
+                    break;
 
-                    case CREATE_BINARY_TREE:
-                        MenuActions.createBinaryTree(staffList);
-                        break;
-
-                    case EXIT:
-                        System.out.println("Okay, Goodbye! ");
-                        System.out.println("");
-                        break;
-                }
+                case EXIT:
+                    System.out.println("Okay, Goodbye! ");
+                    System.out.println("");
+                    break;
             }
         } while (choice != MenuOption.EXIT);
     }

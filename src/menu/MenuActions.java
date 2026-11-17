@@ -14,6 +14,19 @@ import tree.StaffTree;
 // all methods are static, so main calls them with the class name (MenuActions.sortStaff)
 public class MenuActions {
 
+    // main menu: I show the options and ask the question, main only reads the answer
+    public static void showMenu() {
+        System.out.println("==== FRESHMART STAFF MENU ===="); // title of the main menu
+
+        // I print the menu with a for-each over values(), so the text only lives in the enum
+        for (MenuOption option : MenuOption.values()) {
+            System.out.println(option.getNumber() + ". " + option.getDescription());
+        }
+
+        System.out.println("");
+        System.out.print("Choose an option (1-5): "); // outside the for, so I ask only once
+    }
+
     // option 1: I sort the staff A to Z and show the first 20
     public static void sortStaff(StaffList staffList) {
         System.out.println("SORT selected");
