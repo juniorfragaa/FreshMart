@@ -33,4 +33,8 @@ public class NodeQueue {
     public boolean isEmpty(){
         return front == rear;
     }
+    
+    public int size(){
+        return rear - front;
+    }
 }

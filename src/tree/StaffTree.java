@@ -60,13 +60,26 @@ public class StaffTree {
         NodeQueue queue = new NodeQueue();
         queue.enqueue(root);
 
-        while(!queue.isEmpty()){
+        int level = 1;                              // the root is level 1
 
+        while(!queue.isEmpty()){
+            int levelSize = queue.size();           // how many nodes are on this level
+            System.out.println("Level " + level + ":");
+            printLevel(queue, levelSize);           // I print only the nodes of this level
+            level++;
+        }
+    }
+
+    // I print one level: I take levelSize nodes out and put their children in for the next level
+    private void printLevel(NodeQueue queue, int levelSize){
+        for(int i = 0; i < levelSize; i++){
             TreeNode current = queue.dequeue();     // the node for this turn
             StaffMember member = current.getData(); // the staff member inside the node
 
-            System.out.println(member.getName() + " - " +
-                    member.getDesignation() + " - " + member.getDepartment());
+            System.out.println("  " + member.getName() + " - " +
+                    member.getDesignation() + " - " + member.getDepartment() +
+                    " | left: " + childName(current.getLeft()) +
+                    " | right: " + childName(current.getRight()));
 
             if(current.getLeft() != null){          // I only put real children in the queue
                 queue.enqueue(current.getLeft());
@@ -76,6 +89,14 @@ public class StaffTree {
                 queue.enqueue(current.getRight());
             }
         }
+    }
+
+    // I return the child's name, or none when there is no child
+    private String childName(TreeNode child){
+        if(child == null){
+            return "none";
+        }
+        return child.getData().getName();
     }
 
     // Recursive: the height of a node is 1 + the height of its taller side
